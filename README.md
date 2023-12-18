@@ -4,5 +4,6 @@
 
 - [x] Choose topic
 - [x] Start TEX paper
-- [ ] Write... well, kernel module
+- [x] Write... well, kernel module
+- [ ] Write... something in the paper
 - [ ] Pass paper submition

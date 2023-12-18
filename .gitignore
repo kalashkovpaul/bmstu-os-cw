@@ -1,0 +1,10 @@
+.vscode
+ioctl_test.txt
+*.out
+*.cmd
+*.mod*
+*.o
+*.ko
+*.order
+*.symvers
+modify
