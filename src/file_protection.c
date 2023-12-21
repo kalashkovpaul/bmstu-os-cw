@@ -8,7 +8,7 @@
 #include <linux/namei.h>
 #include <asm/string.h>
 // #include <linux/kallsyms.h>
-// #include <linux/version.h>
+// #include <linux/version.оh>
 // #include <linux/fs.h>
 
 // #include <asm/cacheflush.h>
@@ -25,7 +25,7 @@ unsigned int initial_dentry_flags;
 unsigned int initial_inode_flags;
 int permissions;
 
-inline void write_cr0_custom(unsigned long cr0) 
+inline void write_cr0_custom(unsigned long cr0)
 {
     unsigned long __force_order;
     asm volatile("mov %0,%%cr0" : "+r"(cr0), "+m"(__force_order));
@@ -84,7 +84,7 @@ ssize_t write_iter_hook(struct kiocb *X, struct iov_iter *Y)
 int open_hook(struct inode* inode, struct file* filep)
 {
     if(original_fop->open == NULL)
-        return -EINVAL; 
+        return -EINVAL;
     else if (filep->f_mode & FMODE_WRITE)
         return -EACCES;
     else
@@ -105,14 +105,14 @@ struct file_operations* new_file_operations(void)
 	return ret;
 }
 
-struct inode_operations* new_inode_operations(void)
+struct inode_operations*new_inode_operations(void)
 {
 	struct inode_operations* ret = kmalloc(sizeof(struct inode_operations), GFP_KERNEL);
 	memcpy(ret, original_iop, sizeof(struct inode_operations));
 	ret->setattr = setattr;
 	return ret;
 }
- 
+
 static int __init mod_init (void)
 {
     protected_inode = protect_inode();
@@ -129,11 +129,11 @@ static int __init mod_init (void)
     protected_inode->i_fop = new_fop;
     protected_inode->i_op = new_iop;
     printk(KERN_INFO"after: %llx\n", protected_inode->i_fop);
-    enable_write_protection();                
+    enable_write_protection();
     return 0;
 
 }
-    
+
 static void mod_exit (void)
 {
     disable_write_protection();
@@ -143,6 +143,6 @@ static void mod_exit (void)
     kfree(new_fop);
     kfree(new_iop);
 }
-    
+
 module_init(mod_init);
 module_exit(mod_exit);

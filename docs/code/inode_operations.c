@@ -1,0 +1,6 @@
+struct inode_operations {
+    // ...
+	int (*setattr) (struct user_namespace *, struct dentry *,
+			struct iattr *);
+	// ...
+} ____cacheline_aligned;
