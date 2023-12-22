@@ -107,6 +107,7 @@ static int __init mod_init (void)
     if (protected_inode == NULL)
     {
     	printk(KERN_INFO"Cannot get inode address\nMaybe protected file doesn't exist\n");
+        enable_write_protection();   
     	return -1;
     }
     original_fop = protected_inode->i_fop;
