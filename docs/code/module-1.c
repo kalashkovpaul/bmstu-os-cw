@@ -15,7 +15,6 @@ struct inode* protected_inode;
 struct file_operations *original_fop, *new_fop;
 struct inode_operations *original_iop, *new_iop;
 unsigned int initial_dentry_flags;
-int permissions;
 unsigned long initial_cr0;
 
 inline void write_cr0_custom(unsigned long cr0)

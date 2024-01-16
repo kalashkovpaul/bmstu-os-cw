@@ -16,10 +16,9 @@ struct file_operations* new_fop;
 struct inode_operations* original_iop;
 struct inode_operations* new_iop;
 unsigned int initial_dentry_flags;
-int permissions;
 unsigned long initial_cr0;
 
-inline void write_cr0_custom(unsigned long cr0) 
+inline void write_cr0_custom(unsigned long cr0)
 {
     unsigned long __force_order;
     asm volatile("mov %0,%%cr0" : "+r"(cr0), "+m"(__force_order));
@@ -65,7 +64,7 @@ int open_hook(struct inode* inode, struct file* filep)
 {
     int access = -EACCES;
     if(original_fop->open == NULL)
-        access = -EINVAL; 
+        access = -EINVAL;
     else if (!(filep->f_mode & FMODE_WRITE))
         access =  original_fop->open(inode, filep);
     return access;
@@ -98,7 +97,7 @@ struct inode_operations* new_inode_operations(void)
     }
 	return new_iop;
 }
- 
+
 static int __init mod_init (void)
 {
     initial_cr0 = read_cr0();
@@ -107,7 +106,7 @@ static int __init mod_init (void)
     if (protected_inode == NULL)
     {
     	printk(KERN_INFO"Cannot get inode address\nMaybe protected file doesn't exist\n");
-        enable_write_protection();   
+        enable_write_protection();
     	return -1;
     }
     original_fop = protected_inode->i_fop;
@@ -124,21 +123,21 @@ static int __init mod_init (void)
         protected_inode->i_fop = new_fop;
         protected_inode->i_op = new_iop;
     }
-    enable_write_protection();                
+    enable_write_protection();
     return 0;
 
 }
-    
+
 static void mod_exit (void)
 {
     disable_write_protection();
     protected_dentry->d_flags = initial_dentry_flags;
     protected_inode->i_fop = original_fop;
     protected_inode->i_op = original_iop;
-    enable_write_protection(); 
+    enable_write_protection();
     kfree(new_fop);
     kfree(new_iop);
 }
-    
+
 module_init(mod_init);
 module_exit(mod_exit);

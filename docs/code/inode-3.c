@@ -1,32 +1,31 @@
-	struct rw_semaphore i_rwsem;                 /* semaphore */
-	unsigned long dirtied_when;  /* jiffies of first dirtying */
-	unsigned long dirtied_time_when;         /* last dirtying */
-	struct hlist_node i_hash;                    /* hash list */
-	struct list_head i_io_list;        /* backing dev IO list */
-	
-#ifdef CONFIG_CGROUP_WRITEBACK /* flush dirty from page cache */
-	struct bdi_writeback *i_wb;   /* the associated cgroup wb */
-	/* foreign inode detection, see wbc_detach_inode() */
-	int i_wb_frn_winner;
-	u16 i_wb_frn_avg_time;
-	u16 i_wb_frn_history;
-#endif
-	struct list_head i_lru;                /* inode LRU list */
-	struct list_head i_sb_list;              /* sb of inodes */
-	struct list_head i_wb_list;       /* backing dev wb list */
-	union {
-		struct hlist_head   i_dentry;    /* list of dentries */
-		struct rcu_head     i_rcu;    /* list of rcu updates */
-	};
-	atomic64_t i_version;                  /* version number */
-	atomic64_t i_sequence;                      /* see futex */
-	atomic_t i_count;                   /* reference counter */
-	atomic_t i_dio_count;                     /* DIO counter */
-	atomic_t i_writecount;                /* writers counter */
-#if defined(CONFIG_IMA) || defined(CONFIG_FILE_LOCKING) /*IMA*/
-	atomic_t i_readcount;            /* struct files open RO */
-#endif
 	union {
 		const struct file_operations *i_fop /*file operations*/
 		void (*free_inode)(struct inode *); /* free function */
 	};
+	struct file_lock_context *i_flctx;          /* for fcntl */
+	struct address_space i_data;       /* mapping for device */
+	struct list_head	i_devices;  /* list of block devices */
+	union {
+		struct pipe_inode_info *i_pipe;  /* pipe information */
+		struct cdev *i_cdev;                  /*char devices */
+		char *i_link;                             /* symlink */
+		unsigned i_dir_seq;          /* opencoded seqcounter */
+	};
+
+	__u32 i_generation;              /* inode version number */
+
+#ifdef CONFIG_FSNOTIFY
+	__u32 i_fsnotify_mask;  /* all events inode cares about */
+	struct fsnotify_mark_connector __rcu	*i_fsnotify_marks;
+#endif
+
+#ifdef CONFIG_FS_ENCRYPTION
+	struct fscrypt_info	*i_crypt_info;
+#endif
+
+#ifdef CONFIG_FS_VERITY
+	struct fsverity_info *i_verity_info;
+#endif
+
+	void *i_private;       /* fs or device private pointer */
+} __randomize_layout;

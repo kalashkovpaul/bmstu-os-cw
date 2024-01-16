@@ -1,0 +1,114 @@
+<mxfile host="65bd71144e">
+    <diagram id="a6qHx4BYNwDNbsYVMK_5" name="Page-1">
+        <mxGraphModel dx="941" dy="522" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="5" value="Начальное значение регистра CR0" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="2" target="7" edge="1">
+                    <mxGeometry x="-0.9241" y="72" relative="1" as="geometry">
+                        <mxPoint x="620" y="70" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="340" y="75"/>
+                            <mxPoint x="340" y="405"/>
+                        </Array>
+                        <mxPoint x="71" y="57" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="Сбросить 16-й бит регистра CR0" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="40" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="30" y="75" as="sourcePoint"/>
+                        <mxPoint x="180" y="74.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="Значение регистра CR0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1833" y="3" relative="1" as="geometry">
+                        <mxPoint x="7" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="Вернуть регистру CR0 начальное значение" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="770" y="370" width="130" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Объект dentry" style="edgeStyle=none;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="10" target="13" edge="1">
+                    <mxGeometry x="-0.5" y="40" relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="540" y="203"/>
+                            <mxPoint x="540" y="295"/>
+                        </Array>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="Начальное значение поля d_flags" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="10" edge="1">
+                    <mxGeometry x="-0.0625" y="15" relative="1" as="geometry">
+                        <mxPoint x="939" y="185" as="targetPoint"/>
+                        <mxPoint x="510" y="185" as="sourcePoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="Установить флаг FS_IMMUTABLE_FL в поле d_flags объекта dentry" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="150" width="130" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="30" y="185" as="sourcePoint"/>
+                        <mxPoint x="410" y="185" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="Полное имя файла" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="11" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1833" y="3" relative="1" as="geometry">
+                        <mxPoint x="-84" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="Начальное значение file_operations" style="edgeStyle=none;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="13" edge="1">
+                    <mxGeometry x="0.0344" y="8" relative="1" as="geometry">
+                        <mxPoint x="941" y="278" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="Начальное значение inode_operations" style="edgeStyle=none;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" parent="1" source="13" edge="1">
+                    <mxGeometry x="0.0343" y="13" relative="1" as="geometry">
+                        <mxPoint x="940" y="313" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="Заменить поля file_operations и inode_operations&amp;nbsp;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="580" y="260" width="130" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="230" y="520" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="Ассемблерная вставка" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="18" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0595" y="-3" relative="1" as="geometry">
+                        <mxPoint x="-68" y="163" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="20" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="230" y="520" as="sourcePoint"/>
+                        <mxPoint x="244.41" y="110" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="230" y="470"/>
+                            <mxPoint x="835" y="470"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="&lt;font style=&quot;font-size: 10px&quot;&gt;A1.1&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="90" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="A1.2" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="200" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="A1.3" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="670" y="310" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="A1.4" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="860" y="420" width="40" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

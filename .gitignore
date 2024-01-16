@@ -8,3 +8,4 @@ ioctl_test.txt
 *.order
 *.symvers
 modify
+.DS_Store
