@@ -6,7 +6,7 @@
 #include <linux/namei.h>
 #include <asm/string.h>
 
-#define PROTECTED_FILE "/home/paul/Desktop/bmstu-os-cw/src/protected"
+#define PROTECTED_FILE "/home/paul/Desktop/reps/bmstu-os-cw/protected"
 MODULE_LICENSE ("GPL");
 
 struct dentry* protected_dentry;
@@ -70,7 +70,7 @@ int open_hook(struct inode* inode, struct file* filep)
     return access;
 }
 
-int setattr_hook(struct user_namespace *un, struct dentry *d, struct iattr *attr)
+int setattr_hook(struct mnt_idmap *m, struct dentry *d, struct iattr *attr)
 {
     return -EACCES;
 }
