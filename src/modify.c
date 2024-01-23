@@ -1,11 +1,20 @@
 #include <stdio.h>
 
-int main(void)
-{
-    FILE* f = fopen("protected", "w");
-    printf("file is opened: %d\n", f);
-    fprintf(f, "It is modified now\n");
-    if (f)
-        fclose(f);
+#define OLD_FILENAME "../protected"
+#define NEW_FILENAME "../renamed"
+
+int main() {
+    int status;
+
+    // Use the rename function
+    status = rename(OLD_FILENAME, NEW_FILENAME);
+
+    // Check if the rename was successful
+    if (status == 0) {
+        printf("File renamed successfully.\n");
+    } else {
+        printf("Unable to rename the file.\n");
+    }
+
     return 0;
 }
